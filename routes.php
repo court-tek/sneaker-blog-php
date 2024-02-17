@@ -1,4 +1,11 @@
 <?php
 
-$router->get('/', 'HomeController@index');
+// Article blog routes
+$router->get('/', 'ArticlesController@index');
+$router->get('/show', 'ArticlesController@show');
 
+// Auth Routes
+
+// Admin routes
+$router->get('/admin/dash', 'AdminController@index');
+$router->get('/admin/new', 'AdminController@new');
