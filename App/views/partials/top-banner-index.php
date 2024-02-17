@@ -4,7 +4,7 @@
 <!-- Intro -->
     <div id="intro">
         <h1>This is<br />
-        Massively</h1>
+        Sneakerly</h1>
         <p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
         and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
         <ul class="actions">
@@ -14,5 +14,5 @@
 
 <!-- Header -->
 	<header id="header">
-		<a href="index.html" class="logo">Massively</a>
+		<a href="/" class="logo">Sneakerly</a>
 	</header>

@@ -1,9 +1,9 @@
 <!-- Nav -->
 <nav id="nav">
 	<ul class="links">
-		<li class="active"><a href="index.html">This is Massively</a></li>
-		<li><a href="generic.html">Generic Page</a></li>
-		<li><a href="elements.html">Elements Reference</a></li>
+		<li class=""><a href="#">Fashion</a></li>
+		<li class=""><a href="#">Footwear</a></li>
+		<li class=""><a href="#">Art</a></li>
 	</ul>
 	<ul class="icons">
 		<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
