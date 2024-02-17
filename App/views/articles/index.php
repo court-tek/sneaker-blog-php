@@ -8,7 +8,7 @@
     <article class="post featured">
       <header class="major">
         <span class="date">April 25, 2017</span>
-        <h2><a href="#">And this is a<br />
+        <h2><a href="#">And this is a dick<br />
         massive headline</a></h2>
         <p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
         facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
@@ -22,78 +22,19 @@
 
     <!-- Posts -->
     <section class="posts">
+      <?php foreach ($articles as $article) : ?>
       <article>
         <header>
-          <span class="date">April 24, 2017</span>
-          <h2><a href="#">Sed magna<br />
-          ipsum faucibus</a></h2>
+          <span class="date"><?= $article['date'] ?></span>
+          <h2><a href="#"><br /><?= $article['title'] ?></a></h2>
         </header>
-        <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+        <a href="#" class="image fit"><img src="<?= $article['image'] ?>" alt="" /></a>
+        <p><?= $article['content'] ?></p>
         <ul class="actions">
           <li><a href="#" class="button">Full Story</a></li>
         </ul>
       </article>
-      <article>
-        <header>
-          <span class="date">April 22, 2017</span>
-          <h2><a href="#">Primis eget<br />
-          imperdiet lorem</a></h2>
-        </header>
-        <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions">
-          <li><a href="#" class="button">Full Story</a></li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 18, 2017</span>
-          <h2><a href="#">Ante mattis<br />
-          interdum dolor</a></h2>
-        </header>
-        <a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions">
-          <li><a href="#" class="button">Full Story</a></li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 14, 2017</span>
-          <h2><a href="#">Tempus sed<br />
-          nulla imperdiet</a></h2>
-        </header>
-        <a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions">
-          <li><a href="#" class="button">Full Story</a></li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 11, 2017</span>
-          <h2><a href="#">Odio magna<br />
-          sed consectetur</a></h2>
-        </header>
-        <a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions">
-          <li><a href="#" class="button">Full Story</a></li>
-        </ul>
-      </article>
-      <article>
-        <header>
-          <span class="date">April 7, 2017</span>
-          <h2><a href="#">Augue lorem<br />
-          primis vestibulum</a></h2>
-        </header>
-        <a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-        <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-        <ul class="actions">
-          <li><a href="#" class="button">Full Story</a></li>
-        </ul>
-      </article>
+      <?php endforeach; ?>
     </section>
     <?php loadPartial('pagination') ?>
   </div>

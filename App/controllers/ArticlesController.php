@@ -28,8 +28,27 @@ class ArticlesController
     public function index()
     {
         $articles = [
-            'title' => 'First Post',
-            'content' => 'This is the first post'            
+            [
+                'title' => 'First Post',
+                'content' => "This is the first post",
+                'date' => 'Febuary 17, 2024',
+                'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif"
+            
+            ],           
+            [
+                'title' => 'Second Post',
+                'content' => "This is the second post",
+                'date' => 'Febuary 17, 2024',
+                'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif"
+            
+            ],          
+            [
+                'title' => 'Third Post',
+                'content' => "This is the third post",
+                'date' => 'Febuary 17, 2024',
+                'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif"
+            
+            ],          
         ];
 
         // inspectAndDie($home);
