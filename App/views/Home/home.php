@@ -1,4 +1,6 @@
 <?php loadPartial('head') ?>
+<?php loadPartial('top-banner-index') ?>
+<?php loadPartial('navigation') ?>
   <!-- Main -->
   <div id="main">
     
@@ -93,6 +95,6 @@
         </ul>
       </article>
     </section>
-
+    <?php loadView('pagination') ?>
   </div>
 <?php loadPartial('footer') ?>

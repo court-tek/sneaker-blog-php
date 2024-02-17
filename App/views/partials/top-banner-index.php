@@ -11,3 +11,8 @@
             <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
         </ul>
     </div>
+
+<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo">Massively</a>
+	</header>
