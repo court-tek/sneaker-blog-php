@@ -4,6 +4,7 @@
 		<li class=""><a href="#">Fashion</a></li>
 		<li class=""><a href="#">Footwear</a></li>
 		<li class=""><a href="#">Art</a></li>
+		<li class=""><a href="#">Design</a></li>
 	</ul>
 	<ul class="icons">
 		<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>

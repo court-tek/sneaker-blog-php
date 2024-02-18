@@ -65,12 +65,7 @@ class ArticlesController
         // retrieve all items
         $articles = $this->db->query('SELECT * FROM articles')->fetchAll();
 
-        loadView('listings/index', [
-            'listings' => $articles,
-        ]);
-
         // inspectAndDie($home);
-
         loadView('articles/index', [ 'articles' => $articles ]);
     }
 
@@ -89,15 +84,15 @@ class ArticlesController
             'id' => $id
         ];
 
-        $listing = $this->db->query('SELECT * FROM listings where id = :id', $params)->fetch();
+        $articles = $this->db->query('SELECT * FROM articles where id = :id', $params)->fetch();
 
-        if (!$listing) {
-            ErrorController::notFound('Listing Not Found');
+        if (!$articles) {
+            ErrorController::notFound('Article Not Found');
             return;
         }
 
-        loadView('listings/show', [
-            'listing' => $listing,
+        loadView('articles/show', [
+            'articles' => $articles,
         ]);
     }
 }

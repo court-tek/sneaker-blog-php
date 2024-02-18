@@ -1,8 +1,10 @@
+<?php $location = $_SERVER['REQUEST_URI']; ?>
 <!-- Wrapper -->
-<div id="wrapper" class="fade-in">
+
+<div id="wrapper" class="<?php ($location == '/') ? 'fade-in' : '' ?>">
 
 <!-- Intro -->
-    <div id="intro">
+    <div id="intro" class="<?php ($location == '/') ? '' : 'hide-element' ?>">
         <h1>This is<br />
         Sneakerly</h1>
         <p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />

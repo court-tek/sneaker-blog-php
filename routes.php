@@ -2,7 +2,7 @@
 
 // Article blog routes
 $router->get('/', 'ArticlesController@index');
-$router->get('/show', 'ArticlesController@show');
+$router->get('/show/{id}', 'ArticlesController@show');
 
 // Auth Routes
 
