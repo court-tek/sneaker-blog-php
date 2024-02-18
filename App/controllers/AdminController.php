@@ -32,15 +32,11 @@ class AdminController
         // retrieve all items
         $articles = $this->db->query('SELECT * FROM articles')->fetchAll();
 
-        loadView('listings/index', [
-            'listings' => $articles,
+        loadView('admin/index', [
+            'articles' => $articles,
         ]);
 
         // inspectAndDie($home);
-
-        loadView('articles/index', [ 'articles' => $articles ]);
-        // inspectAndDie($home);
-
         loadView('admin/index', [ 'articles' => $articles ]);
     }
 
@@ -61,15 +57,15 @@ class AdminController
      */
     public function create()
     { 
-        $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits', 'work_environment'];
+        $allowedFields = ['title', 'content', 'image_url', 'featured', 'category_id', 'author'];
 
-        $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
+        $newArticleData = array_intersect_key($_POST, array_flip($allowedFields));
 
-        $newListingData['user_id'] = 1;                     
+        $newArticleData['user_id'] = 1;                     
 
-        $newListingData = array_map('sanitize', $newListingData);
+        $newArticleData = array_map('sanitize', $newArticleData);
 
-        $requiredFields = ['title', 'description', 'email', 'city', 'state', 'salary'];
+        $requiredFields = ['title', 'image_url', 'author'];
 
         $errors = [];
 
@@ -81,15 +77,15 @@ class AdminController
         
         if (!empty($errors)) {
             // Reload with errors
-            loadView('listings/new', [
+            loadView('admin/new', [
                 'errors' => $errors,
-                'listing' => $newListingData
+                'article' => $newArticleData
             ]);
         } else {
             // Submit data
            $fields = [];
            
-            foreach ($newListingData as $field => $value) {
+            foreach ($newArticleData as $field => $value) {
                 $fields[] = $field;
             }
 
@@ -97,21 +93,21 @@ class AdminController
 
             $values = [];
             
-            foreach ($newListingData as $field => $value) {
+            foreach ($newArticleData as $field => $value) {
                 // Convert empty strings to null
                 if ($value === '') {
-                    $newListingData[$field] = null;
+                    $newArticleData[$field] = null;
                 }
                 $values[] = ':' . $field; 
             }
 
             $values = implode(', ', $values);
 
-            $query = "INSERT INTO listings ({$fields}) VALUES ({$values})";
+            $query = "INSERT INTO articles ({$fields}) VALUES ({$values})";
 
-            $this->db->query($query, $newListingData);
+            $this->db->query($query, $newArticleData);
 
-            redirect('/listings');
+            redirect('/admin/dash');
         }
     }
 
@@ -128,18 +124,18 @@ class AdminController
             'id' => $id
         ];
 
-        $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
+        $article = $this->db->query('SELECT * FROM articles WHERE id = :id', $params)->fetch();
 
-        if (!$listing) {
-            ErrorController::notFound('Listing Not Found');
+        if (!$article) {
+            ErrorController::notFound('Article Not Found');
             return;
         }
 
-        $this->db->query('DELETE FROM listings WHERE id = :id', $params); 
+        $this->db->query('DELETE FROM articles WHERE id = :id', $params); 
         
         // Set flash message
-        $_SESSION['success_message'] = 'Listing deleted successfully';
-        redirect('/listings');
+        $_SESSION['success_message'] = 'Article deleted successfully';
+        redirect('/admin/dash');
     }
 
     /**
@@ -156,14 +152,14 @@ class AdminController
             'id' => $id
         ];
 
-        $listing = $this->db->query('SELECT * FROM listings where id = :id', $params)->fetch();
+        $listing = $this->db->query('SELECT * FROM articles where id = :id', $params)->fetch();
 
         if (!$listing) {
-            ErrorController::notFound('Listing Not Found');
+            ErrorController::notFound('Article Not Found');
             return;
         }
 
-        loadView('listings/edit', ['listing' => $listing]);
+        loadView('article/edit', ['article' => $article]);
     }
 
     /**
@@ -180,14 +176,14 @@ class AdminController
             'id' => $id
         ];
 
-        $listing = $this->db->query('SELECT * FROM listings where id = :id', $params)->fetch();
+        $article = $this->db->query('SELECT * FROM articles where id = :id', $params)->fetch();
 
-        if (!$listing) {
+        if (!$article) {
             ErrorController::notFound('Listing Not Found');
             return;
         }
 
-         $allowedFields = ['title', 'description', 'salary', 'tags', 'company', 'address', 'city', 'state', 'phone', 'email', 'requirements', 'benefits', 'work_environment'];
+         $allowedFields = ['title', 'content', 'image_url', 'featured', 'category_id', 'author'];
 
          $updateValues = [];
 
@@ -195,7 +191,7 @@ class AdminController
 
          $updateValues = array_map('sanitize', $updateValues); 
 
-         $requiredFields = ['title', 'description', 'email', 'city', 'state', 'salary'];
+         $requiredFields = ['title', 'image_url', 'author'];
 
          $errors = [];
 
@@ -207,8 +203,8 @@ class AdminController
 
         if (!empty($errors)) {
             // Reload with errors
-            loadView('listings/edit', [
-                'listing' => $listing, 
+            loadView('admin/edit', [
+                'article' => $article, 
                 'errors' => $errors,
             ]);
             exit;
@@ -228,11 +224,11 @@ class AdminController
 
             $this->db->query($updateQuery, $updateValues);
 
-            $_SESSION['success_message'] = 'Listing Updated';
+            $_SESSION['success_message'] = 'Article Updated';
 
 
 
-            redirect('/listing/' . $id);
+            redirect('/admin/' . $id);
 
 
 

@@ -9,3 +9,4 @@ $router->get('/show', 'ArticlesController@show');
 // Admin routes
 $router->get('/admin/dash', 'AdminController@index');
 $router->get('/admin/new', 'AdminController@new');
+$router->post('/admin/dash', 'AdminController@create');

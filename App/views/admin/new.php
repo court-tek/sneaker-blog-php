@@ -44,6 +44,13 @@
                         <!-- ============================================================== -->
                         <!-- basic form -->
                         <!-- ============================================================== -->
+                        <?php if (isset($errors)) : ?>
+                            <?php foreach($errors as $error) : ?>
+                                <div class="danger-message">
+                                    <?= $error ?>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">Create Post</h5>
@@ -51,23 +58,23 @@
                                     <form action="#" id="basicform" data-parsley-validate="">
                                         <div class="form-group">
                                             <label for="inputUserName">Title</label>
-                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="" autocomplete="off" class="form-control">
+                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="" value="<?= $article['title'] ?>" autocomplete="off" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail">Image URL</label>
-                                            <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="" autocomplete="off" class="form-control">
+                                            <label for="image url">Image URL</label>
+                                            <input id="image_url" type="text" name="image url" data-parsley-trigger="change" required="" placeholder="" value="<?= $article['image_url'] ?>" autocomplete="off" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="inputPassword">Author</label>
-                                            <input id="inputPassword" type="text" placeholder="" required="" class="form-control">
+                                            <input id="inputPassword" type="text" placeholder="" value="<?= $article['author'] ?>" required="" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="inputRepeatPassword">Catergory</label>
-                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="number" required="" placeholder="" class="form-control">
+                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="number" required="" placeholder="" value="<?= $article['category_id'] ?>" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="content">Content</label>
-                                            <textarea required="" class="form-control"></textarea>
+                                            <textarea required="" class="form-control"><?= $article['content'] ?></textarea>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12 pl-0">
