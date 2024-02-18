@@ -32,12 +32,8 @@ class AdminController
         // retrieve all items
         $articles = $this->db->query('SELECT * FROM articles')->fetchAll();
 
-        loadView('admin/index', [
-            'articles' => $articles,
-        ]);
-
         // inspectAndDie($home);
-        loadView('admin/index', [ 'articles' => $articles ]);
+        loadView('admin/index');
     }
 
     /**
@@ -57,7 +53,8 @@ class AdminController
      */
     public function create()
     { 
-        $allowedFields = ['title', 'content', 'image_url', 'featured', 'category_id', 'author'];
+        
+        $allowedFields = $allowedFields = ['title', 'content', 'img_url', 'featured', 'category_id', 'author'];
 
         $newArticleData = array_intersect_key($_POST, array_flip($allowedFields));
 
@@ -65,12 +62,12 @@ class AdminController
 
         $newArticleData = array_map('sanitize', $newArticleData);
 
-        $requiredFields = ['title', 'image_url', 'author'];
+        $requiredFields = ['title', 'content', 'img_url', 'category_id', 'author'];
 
         $errors = [];
 
         foreach ($requiredFields as $field) {
-            if (empty($newListingData[$field]) || !Validation::string($newListingData[$field])) {
+            if (empty($newArticleData[$field]) || !Validation::string($newArticleData[$field])) {
                 $errors[$field] = ucfirst($field) . ' is required';
             }
         }
@@ -79,7 +76,7 @@ class AdminController
             // Reload with errors
             loadView('admin/new', [
                 'errors' => $errors,
-                'article' => $newArticleData
+                'listing' => $newArticleData
             ]);
         } else {
             // Submit data
@@ -152,9 +149,9 @@ class AdminController
             'id' => $id
         ];
 
-        $listing = $this->db->query('SELECT * FROM articles where id = :id', $params)->fetch();
+        $article = $this->db->query('SELECT * FROM articles where id = :id', $params)->fetch();
 
-        if (!$listing) {
+        if (!$article) {
             ErrorController::notFound('Article Not Found');
             return;
         }
