@@ -1,3 +1,4 @@
+    <?php $arrayOfThemes = [ 1 => 'fashion', 2 => 'footwear', 3 => "art"] ?>
     <?php loadPartial('head.admin') ?>
         <!-- ============================================================== -->
 	    <!-- navbar -->
@@ -42,13 +43,6 @@
                 <!-- end pageheader -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- validation form -->
-                    <!-- ============================================================== -->
-                        
-                        <!-- ============================================================== -->
-                        <!-- end validation form -->
-                        <!-- ============================================================== -->
                     </div>
                     <div class="row">
                         <!-- ============================================================== -->
@@ -58,33 +52,41 @@
                             <div class="card">
                                 <h5 class="card-header">Basic Form</h5>
                                 <div class="card-body">
-                                    <form action="#" id="basicform" data-parsley-validate="">
+                                    <form method="POST" action="/admin/dash" id="basicform" data-parsley-validate="">
                                         <div class="form-group">
-                                            <label for="inputUserName">User Name</label>
-                                            <input id="inputUserName" type="text" name="name" data-parsley-trigger="change" required="" placeholder="Enter user name" autocomplete="off" class="form-control">
+                                            <label for="title">Title</label>
+                                            <input id="title" type="text" name="title" data-parsley-trigger="change" required="" placeholder="" value="<?= $article['title'] ?? '' ?>" autocomplete="off" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail">Email address</label>
-                                            <input id="inputEmail" type="email" name="email" data-parsley-trigger="change" required="" placeholder="Enter email" autocomplete="off" class="form-control">
-                                        </div>
+                                            <label for="img_url">Image Url</label>
+                                            <input id="img_url" type="text" name="img_url" data-parsley-trigger="change" required="" placeholder="" value="<?= $article['img_url'] ?? '' ?>" autocomplete="off" class="form-control">
+                                        </div>  
                                         <div class="form-group">
-                                            <label for="inputPassword">Password</label>
-                                            <input id="inputPassword" type="password" placeholder="Password" required="" class="form-control">
-                                        </div>
+                                            <label for="category_id">Category Id</label>
+                                            <select name="category_id" value="<?= $article['category_id'] ?? '' ?>" class="form-control">
+                                                <?php foreach($arrayOfThemes as $theme) : ?>
+                                                    <option><?= $theme ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>                          
                                         <div class="form-group">
-                                            <label for="inputRepeatPassword">Repeat Password</label>
-                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" placeholder="Password" class="form-control">
-                                        </div>
+                                            <label for="author">Author</label>
+                                            <input id="author" type="text" name="author" data-parsley-trigger="change" required="" placeholder="" value="<?= $article['author'] ?? '' ?>" autocomplete="off" class="form-control">
+                                        </div>                            
+                                        <div class="form-group">
+                                            <label for="content">Content</label>
+                                            <textarea required="" name="content" class="form-control"><?= $article['content'] ?? '' ?></textarea>
+                                        </div>                            
                                         <div class="row">
                                             <div class="col-sm-6 pb-2 pb-sm-4 pb-lg-0 pr-0">
                                                 <label class="be-checkbox custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Remember me</span>
+                                                    <input type="hidden" name="featured" value="0" class="custom-control-input"></span>
+                                                    <input type="checkbox" name="featured" value="<?= $article['featured'] ?? "" ?>" class="custom-control-input"><span class="custom-control-label">Featured</span>
                                                 </label>
                                             </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
                                                     <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <button class="btn btn-space btn-secondary">Cancel</button>
                                                 </p>
                                             </div>
                                         </div>
@@ -95,22 +97,9 @@
                         <!-- ============================================================== -->
                         <!-- end basic form -->
                         <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- horizontal form -->
-                        <!-- ============================================================== -->
-                        
-                        <!-- ============================================================== -->
-                        <!-- end horizontal form -->
-                        <!-- ============================================================== -->
                     </div>
                     <div class="row">
-                        <!-- ============================================================== -->
-                        <!-- valifation types -->
-                        <!-- ============================================================== -->
                         
-                        <!-- ============================================================== -->
-                        <!-- end valifation types -->
-                        <!-- ============================================================== -->
                     </div>
            
             </div>
