@@ -27,32 +27,77 @@ class ArticlesController
      */
     public function index()
     {
-        $articles = [
-            [
-                'title' => 'First Post',
-                'content' => "This is the first post",
-                'date' => 'Febuary 17, 2024',
-                'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif"
+        // $articles = [
+        //     [
+        //         'title' => 'First Post',
+        //         'content' => "This is the first post",
+        //         'date' => 'Febuary 17, 2024',
+        //         'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif",
+        //         'featured' => false
             
-            ],           
-            [
-                'title' => 'Second Post',
-                'content' => "This is the second post",
-                'date' => 'Febuary 17, 2024',
-                'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif"
+        //     ],           
+        //     [
+        //         'title' => 'Second Post',
+        //         'content' => "This is the second post",
+        //         'date' => 'Febuary 17, 2024',
+        //         'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif",
+        //         'featured' => true
             
-            ],          
-            [
-                'title' => 'Third Post',
-                'content' => "This is the third post",
-                'date' => 'Febuary 17, 2024',
-                'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif"
+        //     ],          
+        //     [
+        //         'title' => 'Third Post',
+        //         'content' => "This is the third post",
+        //         'date' => 'Febuary 17, 2024',
+        //         'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif",
+        //         'featured' => false
             
-            ],          
-        ];
+        //     ],          
+        //     [
+        //         'title' => 'Fourth Post',
+        //         'content' => "This is the fourth post",
+        //         'date' => 'Febuary 17, 2024',
+        //         'image' => "https://raw.githubusercontent.com/court-tek/sneaker-blog-php/main/public/images/adidasstop.avif",
+        //         'featured' => false
+            
+        //     ],          
+        // ];
+
+        // retrieve all items
+        $articles = $this->db->query('SELECT * FROM articles')->fetchAll();
+
+        loadView('listings/index', [
+            'listings' => $articles,
+        ]);
 
         // inspectAndDie($home);
 
         loadView('articles/index', [ 'articles' => $articles ]);
+    }
+
+    /**
+     * Display a single listing
+     * 
+     * @param array $params
+     * @return void
+     */
+    public function show($params)
+    {
+
+        $id = $params['id'] ?? '';
+
+        $params = [
+            'id' => $id
+        ];
+
+        $listing = $this->db->query('SELECT * FROM listings where id = :id', $params)->fetch();
+
+        if (!$listing) {
+            ErrorController::notFound('Listing Not Found');
+            return;
+        }
+
+        loadView('listings/show', [
+            'listing' => $listing,
+        ]);
     }
 }

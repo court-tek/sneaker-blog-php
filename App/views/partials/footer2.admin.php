@@ -4,22 +4,22 @@
 	<!-- ============================================================== -->
 	<!-- Optional JavaScript -->
 	<!-- jquery 3.3.1 -->
-	<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script src="../vendor/jquery/jquery-3.3.1.min.js"></script>
 	<!-- bootstap bundle js -->
-	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
 	<!-- slimscroll js -->
-	<script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+	<script src="../vendor/slimscroll/jquery.slimscroll.js"></script>
 	<!-- main js -->
-	<script src="assets/libs/js/main-js.js"></script>
+	<script src="../libs/js/main-js.js"></script>
 	<!-- morris-chart js -->
-	<script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-	<script src="assets/vendor/charts/morris-bundle/morris.js"></script>
-	<script src="assets/vendor/charts/morris-bundle/morrisjs.html"></script>
+	<script src="../vendor/charts/morris-bundle/raphael.min.js"></script>
+	<script src="../vendor/charts/morris-bundle/morris.js"></script>
+	<script src="../vendor/charts/morris-bundle/morrisjs.html"></script>
 	<!-- chart js -->
-	<script src="assets/vendor/charts/charts-bundle/Chart.bundle.js"></script>
-	<script src="assets/vendor/charts/charts-bundle/chartjs.js"></script>
+	<script src="../vendor/charts/charts-bundle/Chart.bundle.js"></script>
+	<script src="../vendor/charts/charts-bundle/chartjs.js"></script>
 	<!-- dashboard js -->
-	<script src="assets/libs/js/dashboard-influencer.js"></script>
+	<script src="../libs/js/dashboard-influencer.js"></script>
 	<script>
     $('#form').parsley();
     </script>
